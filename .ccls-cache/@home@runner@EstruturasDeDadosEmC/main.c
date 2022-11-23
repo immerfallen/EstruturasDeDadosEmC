@@ -36,6 +36,14 @@ void add(float x, float y){
 	
 };
 
+void imprime(){
+	Ponto *auxLista = listaPontos;
+	while(auxLista!=NULL){
+		printf("Ponto (%.1f, %.1f)\n", auxLista->x, auxLista->y );
+		auxLista = auxLista->prox;
+	}
+};
+
 int main() {
 /*
 	Pessoa p;
@@ -73,7 +81,7 @@ int main() {
 	add(3,0);
 	add(5,3);
 
-	printf("%.0f", listaPontos->prox->prox->x);
+	imprime();
 	
 	
   return 0;
