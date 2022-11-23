@@ -19,9 +19,22 @@ int val = 5;
 struct ponto{
 float x;
 float y;
+struct ponto *prox;
 };
 
 typedef struct ponto Ponto;
+
+Ponto *listaPontos;
+
+void add(float x, float y){
+	
+	Ponto *p = (Ponto*)malloc(sizeof(Ponto));
+	p->x=x;
+	p->y=y;
+	p->prox = listaPontos;
+	listaPontos = p;
+	
+};
 
 int main() {
 /*
@@ -39,11 +52,30 @@ int main() {
 
 	*/
 
-	Ponto *p = (Ponto*)malloc(sizeof(Ponto));
+	/*Ponto *p = (Ponto*)malloc(sizeof(Ponto));
 	p->x=1;
 	p->y=3;
 
-	printf("Ponto = (%.2f, %.2f)",p->x,p->y);
+	Ponto *p1 = (Ponto*)malloc(sizeof(Ponto));
+	p1->x=67;
+	p1->y=9;
+
+	Ponto *p2 = (Ponto*)malloc(sizeof(Ponto));
+	p2->x=67;
+	p2->y=9;
+	
+	p->prox = p1;
+	p1->prox = p2;
+	p2->prox = NULL;
+	*/
+
+	add(1,5);
+	add(3,0);
+	add(5,3);
+
+	printf("%.0f", listaPontos->prox->prox->x);
+	
 	
   return 0;
 }
+
