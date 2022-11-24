@@ -16,7 +16,7 @@ typedef struct pessoa Pessoa;
 int val = 5;
 */
 
-/*struct ponto{
+struct ponto{
 float x;
 float y;
 struct ponto *prox;
@@ -36,14 +36,14 @@ void add(float x, float y){
 	
 };
 
-void imprime(){
-	Ponto *auxLista = listaPontos;
-	while(auxLista!=NULL){
-		printf("Ponto (%.1f, %.1f)\n", auxLista->x, auxLista->y );
-		auxLista = auxLista->prox;
+void imprime(Ponto *p){
+	
+	if(p!=NULL){
+		printf("Ponto(%.2f,%.2f)\n",p->x,p->y);
+		imprime(p->prox);
 	}
 };
-*/
+/*
 
 int potencia(int base, int ep){
 	if(ep==1){
@@ -51,6 +51,8 @@ int potencia(int base, int ep){
 	}
 	return base*potencia(base, ep-1);
 }
+
+*/
 
 int main() {
 /*
@@ -67,8 +69,8 @@ int main() {
 	printf("O valor apontado por p é %d", *p );
 
 	*/
-
-	/*Ponto *p = (Ponto*)malloc(sizeof(Ponto));
+/*
+	Ponto *p = (Ponto*)malloc(sizeof(Ponto));
 	p->x=1;
 	p->y=3;
 
@@ -79,23 +81,27 @@ int main() {
 	Ponto *p2 = (Ponto*)malloc(sizeof(Ponto));
 	p2->x=67;
 	p2->y=9;
-	
+*/
+	/*
 	p->prox = p1;
 	p1->prox = p2;
 	p2->prox = NULL;
-	*/
-/*
-	add(1,5);
-	add(3,0);
-	add(5,3);
+*/
 
-	imprime();
-	
-	*/
 
-	int y = potencia(4,4);
+/*	int y = potencia(4,4);
 
 printf("%d", y);
+
+	*/
+
+	
+	add(1,5);
+	add(3,0);
+	add(5,3);	
+
+	Ponto *auxLista = listaPontos;
+	imprime(auxLista);
 	
   return 0;
 }
