@@ -16,7 +16,7 @@ typedef struct pessoa Pessoa;
 int val = 5;
 */
 
-struct ponto{
+/*struct ponto{
 float x;
 float y;
 struct ponto *prox;
@@ -43,6 +43,14 @@ void imprime(){
 		auxLista = auxLista->prox;
 	}
 };
+*/
+
+int potencia(int base, int ep){
+	if(ep==1){
+		return base;
+	}
+	return base*potencia(base, ep-1);
+}
 
 int main() {
 /*
@@ -76,13 +84,18 @@ int main() {
 	p1->prox = p2;
 	p2->prox = NULL;
 	*/
-
+/*
 	add(1,5);
 	add(3,0);
 	add(5,3);
 
 	imprime();
 	
+	*/
+
+	int y = potencia(4,4);
+
+printf("%d", y);
 	
   return 0;
 }
