@@ -24,9 +24,9 @@ struct ponto *prox;
 
 typedef struct ponto Ponto;
 
-Ponto *listaPontos;
+Ponto *listaPontos; // aponta para o início da lista
 
-void add(float x, float y){
+void addFirst(float x, float y){
 	
 	Ponto *p = (Ponto*)malloc(sizeof(Ponto));
 	p->x=x;
@@ -35,6 +35,24 @@ void add(float x, float y){
 	listaPontos = p;
 	
 };
+
+void addLast(int x, int y){
+	
+	Ponto *p = (Ponto*)malloc(sizeof(Ponto));
+	p->x=x;
+	p->y=y;
+	p-> prox = NULL;
+	if(listaPontos == NULL){
+		listaPontos = p;
+	}
+	else{
+		Ponto *listaAux = listaPontos;
+		while(listaAux->prox != NULL){
+			listaAux = listaAux->prox;
+		}
+		listaAux->prox=p;
+	}
+}
 
 void imprime(Ponto *p){
 	
@@ -96,9 +114,11 @@ printf("%d", y);
 	*/
 
 	
-	add(1,5);
-	add(3,0);
-	add(5,3);	
+	addFirst(1,5);
+	addFirst(3,0);
+	addFirst(5,3);
+	addLast(1,1);
+	addLast(8,8);
 
 	Ponto *auxLista = listaPontos;
 	imprime(auxLista);
