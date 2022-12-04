@@ -26,6 +26,8 @@ typedef struct ponto Ponto;
 
 Ponto *listaPontos; // aponta para o início da lista
 
+
+
 void addFirst(float x, float y){
 	
 	Ponto *p = (Ponto*)malloc(sizeof(Ponto));
@@ -51,6 +53,53 @@ void addLast(int x, int y){
 			listaAux = listaAux->prox;
 		}
 		listaAux->prox=p;
+	}
+}
+
+int length = 0;
+
+void addIndex(float x, float y, int index){
+	Ponto *p = (Ponto*)malloc(sizeof(Ponto));
+	p->x=x;
+	p->y=y;	
+
+	if(index>length){
+		printf("Posição inválida.");
+	}
+	else{
+		if(index==0){
+			p->prox = listaPontos; 
+			listaPontos = p;
+		} else{
+			Ponto *listaAux = listaPontos;
+			int i=0;
+			while(i!=index-1){
+				listaAux=listaAux->prox;
+				i++;
+			}
+			p->prox=listaAux->prox;
+			listaAux->prox = p;
+		}
+		length++;
+	}	
+}
+
+void removeIndex(int index){
+	if(index>length || length==0){
+		printf("Posição inválida ou lista vazia.");
+	}else{
+		if(index==0){
+			listaPontos = listaPontos->prox;
+		}else{
+			Ponto *listaAux = listaPontos;
+			int i=0;
+			while(i!=index-1){
+				listaAux = listaAux->prox;
+				i++;
+			}
+			listaAux->prox = listaAux->prox->prox;
+		}
+		
 	}
 }
 
@@ -113,14 +162,21 @@ printf("%d", y);
 
 	*/
 
-	
+	/*
 	addFirst(1,5);
 	addFirst(3,0);
 	addFirst(5,3);
 	addLast(1,1);
 	addLast(8,8);
 
+	*/
+
+	addIndex(4,5,0);
+	addIndex(4,5,1);
+	addIndex(7,7,0);
+
 	Ponto *auxLista = listaPontos;
+	removeIndex(1);
 	imprime(auxLista);
 	
   return 0;
